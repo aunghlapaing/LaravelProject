@@ -14,7 +14,7 @@
     <a href="{{ route('routetest','route testing') }}">Admin Page</a>
     <a href="{{ url('/RouteTesting/testing') }}">URL testing</a>
 
-
+  
 
    {{-- this is the comment --}}
 
