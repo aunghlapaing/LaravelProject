@@ -10,7 +10,10 @@
     <h1>This is UOS Page</h1>
     <hr>
     <form action="{{ url('userData') }}" method="post">
+        @csrf
+        {{-- <input type="text" name="token" value="{{ csrf_token() }}" id=""> --}}
         <input type="text" name="uos" placeholder="Enter name...">
+        <input type="text" name="classno" placeholder="Enter class number...">
         <input type="submit" name="btn_submit" id="" value="send data">
     </form>
     

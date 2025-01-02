@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 
@@ -169,9 +169,14 @@ Route::get('php', function(){
 Route::get('classroom/uos', function(){
     return view('classroom/UOS');
 
-});
+})->name('uos');
 
 // Get data by post method from /classroom/UOS
 Route::post ('userData', function( Request $userData){
-    dd($request->all());
+
+    // dd($userData->all());
+    $name = $userData->uos;
+    $classno = $userData->classno;
+    dd($name, $classno);
+    
 });
