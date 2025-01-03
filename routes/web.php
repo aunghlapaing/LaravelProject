@@ -185,7 +185,7 @@ Route::get ('service', function(){
     return view ('service');
 });
 
-// Post method from service page
+// Post method from service page && validation 
 Route::post('post-service', function( Request $request){
     // dd($request->all());
 
@@ -220,3 +220,19 @@ Route::post('post-service', function( Request $request){
     // ]);
     return "Register success";
 } );
+
+// Route for file upload && validation for file
+Route::post ('file/upload', function(Request $request){
+    // dd($request->all());
+
+    $request->validate([
+        'name'=>'required',
+        'file'=>'required|mimes:jpeg,jpg,png,gif'
+    ]);
+
+    $file = $request->file('file');
+    $file_name = uniqid(). $file->getClientOriginalname();
+    $file->move( public_path() . '/image/', $file_name );
+
+    dd($request->all());
+})->name('file');
