@@ -4,23 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\Password;
 
 
 //get post push patch delete option
 
 // Route::redirect('/', 'home', 404);
-
-Route::get('/home', function (){
-    // echo "This is home page, testing laravel route get";
-    $arr = [1,2,3,4,5];
-
-    // print_r($arr);
-    // dd($arr);
-
-    // logger($arr);
-
-    echo "this is testing for dd()";
-});
 
 
 Route::get('/about', function (){
@@ -180,3 +169,54 @@ Route::post ('userData', function( Request $userData){
     dd($name, $classno);
     
 });
+
+// Route Home Page
+Route:: get('home', function(){
+    return view('home');
+});
+
+// Route About Page
+Route::get ('about', function(){
+    return view('about');
+});
+
+// Route Service Page
+Route::get ('service', function(){
+    return view ('service');
+});
+
+// Post method from service page
+Route::post('post-service', function( Request $request){
+    // dd($request->all());
+
+    $rules = [
+        'name'=>'required',
+        'gender'=> 'required',
+        'phone'=> ['required', 'digits_between:9,9'],
+        'email'=> 'required',
+        'password'=> ['required', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+        'confirm-password'=> 'required|same:password'   
+    ];
+    $message = [
+        'name.required' => 'Even Dog has a name?',
+        'gender.required' => 'Eeven Dog has a gender?',
+        'phone.required' => 'If you are a human, should have a phone number?',
+        'phone.digits_between' => 'Phone number should have 9 digts',
+        'email.required' => 'If you are a human, should have an email number?',
+        'password.required' => 'Set a strong password?',
+        'confirm-password.required' => 'Confirm your shit again!'
+        
+    ];
+
+    $request->validate ($rules, $message);
+
+    // $request->validate([
+    //     'name'=>'required',
+    //     'gender'=> 'required',
+    //     'phone'=> 'required',
+    //     'email'=> 'required',
+    //     'password'=> 'required',
+    //     'confirm-password'=> 'required'
+    // ]);
+    return "Register success";
+} );

@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel || Home Page</title>
-</head>
-<body>
-    <h1>Laravel Home Page</h1>
-    <hr>
+@extends('Layout/master')
 
-    {{-- route manual --}}
-    <a href="../views/classroom/fcd.blade.php">Go to FCD class room</a>
+@section('title','Laravel | Home')
 
-    {{-- laravel power route --}}
-    <a href="{{ url('FCD') }}">Go to FCD class room</a>
+@section('content')
 
-    {{-- asset refer to public / laravel power --}}
-    <img src="{{ asset('/image/userProfile.png') }}" alt="">
+<div class="container">
+    <h1 class="bg-primary text-white p-3 mt-3">Home Page</h1>
+</div>
     
-</body>
-</html>
+@endsection
