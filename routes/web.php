@@ -3,7 +3,7 @@
 use App\Models\payment;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Class\ClassRoom;
+use App\Http\Controllers\Admin\ClassRoom;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\Admin\userController;
 use App\Http\Controllers\Admin\adminController;
@@ -32,4 +32,4 @@ Route::get ('payment', function(){
 });
 
 //insert data via model + permission for select
-Route::get ('classroom', [ClassRoom::class, 'insert']);
+Route::get ('classroom', [ClassRoom::class, 'insert'])->name('classroom');
