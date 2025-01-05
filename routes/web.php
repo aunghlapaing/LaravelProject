@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\payment;
 
+use App\Models\payment;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\ClassRoom;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\Admin\userController;
@@ -33,3 +34,8 @@ Route::get ('payment', function(){
 
 //insert data via model + permission for select
 Route::get ('classroom', [ClassRoom::class, 'insert'])->name('classroom');
+
+//blogs route
+Route::group(['prefix'=>'blog'], function(){
+    Route::get('route', [BlogController::class, 'create'])->name('blog');
+});
