@@ -37,5 +37,10 @@ Route::get ('classroom', [ClassRoom::class, 'insert'])->name('classroom');
 
 //blogs route
 Route::group(['prefix'=>'blog'], function(){
-    Route::get('route', [BlogController::class, 'create'])->name('blog');
+    Route::get('create', [BlogController::class, 'create'])->name('create');
+    Route::get('read', [BlogController::class, 'read'])->name('read');
+    Route::get('detail/{id}',[BlogController::class, 'detail'])->name('detail');
+    Route::get('update/{id}',[BlogController::class,'update'])->name('update');
+    Route::get ('delete/{id}',[BlogController::class, 'delete'])->name('delete');
 });
+
