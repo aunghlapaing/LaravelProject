@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="d-flex justify-content-center m-4">
-        <a href=" {{ url('home')  }} ">Home Page | </a>
-        <a href=" {{ url('about') }} "> About Page | </a>
-        <a href=" {{ url('service') }} "> Service Page</a>
+        <a href=" {{ route('home')  }} ">Home Page | </a>
+        <a href=" {{ route('about') }} "> About Page | </a>
+        <a href=" {{ route('service') }} "> Service Page</a>
     </div>
 
    @yield('content')

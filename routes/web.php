@@ -44,3 +44,10 @@ Route::group(['prefix'=>'blog'], function(){
     Route::get ('delete/{id}',[BlogController::class, 'delete'])->name('delete');
 });
 
+Route::group(['prefix'=>'testing'], function(){
+    Route::get('/home',[TestingController::class, 'homeTesting'])->name('home');
+    Route::get('/about', [TestingController::class, 'aboutTesting'])->name('about');
+    Route::get('/service', [TestingController::class, 'serviceTesting'])->name('service');
+    Route::post('/file', [TestingController::class, 'fileUpload'])->name('file');
+});
+

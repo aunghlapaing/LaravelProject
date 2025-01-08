@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 
 class TestingController extends Controller
 {
-    public function controllerTesting(){
-        $test = "This is controller Testing";
-        dd($test);
+    public function homeTesting(){
+        return view('home');
+    }
+    public function aboutTesting(){
+        return view('about');
+    }
+    public function serviceTesting(){
+        return view('service');
+    }
+    public function fileUpload(Request $request){
+        dd($request->all());
     }
 }
