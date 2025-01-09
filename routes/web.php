@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Blog;
 use App\Models\payment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
@@ -49,5 +50,13 @@ Route::group(['prefix'=>'testing'], function(){
     Route::get('/about', [TestingController::class, 'aboutTesting'])->name('about');
     Route::get('/service', [TestingController::class, 'serviceTesting'])->name('service');
     Route::post('/file', [TestingController::class, 'fileUpload'])->name('file');
+});
+
+Route::get('test', function(){
+    $data = Blog::select('*')
+                    ->orWhere('name','testing')
+                    ->get();
+
+    dd($data->toArray());
 });
 
